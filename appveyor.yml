@@ -1,0 +1,33 @@
+version: 0.0.1
+
+branches:
+  only:
+    - main
+
+artifacts:
+  - path: app-0.0.1-win64.zip
+    name: dist
+
+build_script: |
+  set PATH=C:\Python39-x64;C:\Python39-x64\Scripts;%PATH%
+  python -m pip install mugideploy
+  call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
+  set PATH=C:\Qt\5.14.2\msvc2017_64\bin;C:\Qt\Tools\QtCreator\bin;%PATH%
+  git clone https://github.com/opencor/qwt.git
+  pushd qwt
+  qmake
+  jom -j4 install
+  popd
+  set PATH=C:\Qwt-6.2.0\lib;%PATH%
+  qmake
+  jom release
+  mugideploy --bin release\app.exe
+  7z a app-0.0.1-win64.zip app-0.0.1-win64
+
+deploy:
+  description: 'qwt-build'
+  provider: GitHub
+  auth_token:
+    secure: gcYWBlGRr48R9W3Snz+xXmLh1TIT/wYLnoYgdaCRlKiWA4SyZkNC3b+GZdIiyCra
+  on:
+    branch: master

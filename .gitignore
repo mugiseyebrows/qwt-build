@@ -1,0 +1,6 @@
+Makefile*
+debug/
+release/
+app-0.0.1-win64/
+*.pro.*
+.qmake*

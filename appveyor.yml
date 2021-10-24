@@ -1,4 +1,4 @@
-version: 0.0.6
+version: 0.0.7
 
 branches:
   only:
@@ -23,7 +23,7 @@ build_script: |
   set PATH=C:\Qwt-6.2.0\lib;%PATH%
   qmake
   nmake release
-  mugideploy collect --bin release\app.exe
+  mugideploy collect --bin release\app.exe --no-vcredist
   7z a app-0.0.1-win64.zip app-0.0.1-win64
   python list.py
 

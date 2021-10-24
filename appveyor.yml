@@ -1,4 +1,4 @@
-version: 0.0.7
+version: 0.0.8
 
 branches:
   only:
@@ -24,7 +24,8 @@ build_script: |
   qmake
   nmake release
   mugideploy collect --bin release\app.exe --no-vcredist
-  7z a app-0.0.1-win64.zip app-0.0.1-win64
+  cd ..
+  7z a app-0.0.1-win64.zip app\app-0.0.1-win64
   python list.py
 
 deploy:

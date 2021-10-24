@@ -6,8 +6,8 @@ def main():
     with open(dest, 'w', encoding='utf-8') as outf:
         for root, dirs, files in os.walk(path):
             for f in files:
-                if os.path.splitext(f)[1] in ['.exe', '.dll']:
-                    outf.write(os.path.join(root, f) + "\n")
+                #if os.path.splitext(f)[1] in ['.exe', '.dll']:
+                outf.write(os.path.join(root, f) + "\n")
     
 if __name__ == "__main__":
     main()

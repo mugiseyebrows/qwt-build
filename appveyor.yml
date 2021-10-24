@@ -1,4 +1,4 @@
-version: 0.0.3
+version: 0.0.4
 
 branches:
   only:
@@ -19,7 +19,7 @@ build_script: |
   cd qwt
   qmake
   nmake install
-  cd ..
+  cd ..\app
   set PATH=C:\Qwt-6.2.0\lib;%PATH%
   qmake
   nmake release

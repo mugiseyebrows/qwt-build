@@ -1,4 +1,4 @@
-version: 0.0.1
+version: 0.0.2
 
 branches:
   only:
@@ -7,6 +7,8 @@ branches:
 artifacts:
   - path: app-0.0.1-win64.zip
     name: dist
+  - path: listing.txt
+    name: listing
 
 build_script: |
   set PATH=C:\Python39-x64;C:\Python39-x64\Scripts;%PATH%
@@ -16,13 +18,14 @@ build_script: |
   git clone https://github.com/opencor/qwt.git
   pushd qwt
   qmake
-  jom -j4 install
+  nmake install
   popd
   set PATH=C:\Qwt-6.2.0\lib;%PATH%
   qmake
-  jom release
+  nmake release
   mugideploy --bin release\app.exe
   7z a app-0.0.1-win64.zip app-0.0.1-win64
+  python list.py
 
 deploy:
   description: 'qwt-build'

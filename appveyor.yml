@@ -1,4 +1,4 @@
-version: 0.0.17
+version: 0.0.18
 
 branches:
   only:
@@ -13,7 +13,10 @@ artifacts:
     name: info
     
 build_script: |
-  env vc python qt5 jom qwt
+  env vc qt5 jom qwt python
+  where python
+  where qmake
+  where jom
   python -m pip install mugideploy
   git clone https://github.com/opencor/qwt.git
   cd qwt

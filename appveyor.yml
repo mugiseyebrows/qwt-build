@@ -1,4 +1,4 @@
-version: 0.0.13
+version: 0.0.14
 
 branches:
   only:
@@ -9,13 +9,12 @@ artifacts:
     name: dist
   - path: listing.txt
     name: listing
-
+  - path: info.txt
+    name: info
+    
 build_script: |
-  set PATH=C:\Python39-x64;C:\Python39-x64\Scripts;%PATH%
+  env python qt5 jom qwt vc
   python -m pip install mugideploy
-  call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
-  set PATH=C:\Qt\5.14.2\msvc2017_64\bin;%PATH%
-  set PATH=C:\Qt\Tools\QtCreator\bin\jom;%PATH%
   git clone https://github.com/opencor/qwt.git
   cd qwt
   qmake
@@ -28,6 +27,7 @@ build_script: |
   mugideploy collect --bin app\release\app.exe --no-vcredist
   7z a app-0.0.1-win64.zip app-0.0.1-win64
   python list.py
+  python info.py
 
 deploy:
   description: 'qwt-build'

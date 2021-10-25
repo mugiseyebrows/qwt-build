@@ -1,4 +1,4 @@
-version: 0.0.21
+version: 0.0.22
 
 branches:
   only:
@@ -13,10 +13,11 @@ artifacts:
     name: info
     
 build_script: |
+  set PATH=C:\windows
   echo %PATH%
   call env vc
   echo %PATH%
-  call env python qt5 jom qwt
+  call env python qt5 jom qwt git
   echo %PATH%
   where python
   where qmake

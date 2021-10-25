@@ -4,6 +4,8 @@ for %%x in (%*) do (
     if "%%~x" equ "vc" call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
     if "%%~x" equ "jom" set "PATH=C:\Qt\Tools\QtCreator\bin\jom;%PATH%"
     if "%%~x" equ "qt5" set "PATH=C:\Qt\5.14.2\msvc2017_64\bin;%PATH%"
-    if "%%~x" equ "qwt" set "PATH=C:\Qwt-6.2.0\lib;%PATH%"    
+    if "%%~x" equ "qwt" set "PATH=C:\Qwt-6.2.0\lib;%PATH%"
+    if "%%~x" equ "7z" set "PATH=C:\Program Files\7-Zip;%PATH%"
+    if "%%~x" equ "git" set "PATH=C:\Program Files\Git\cmd;%PATH%"
 )
 rem echo %PATH%

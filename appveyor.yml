@@ -1,4 +1,4 @@
-version: 0.0.20
+version: 0.0.21
 
 branches:
   only:
@@ -13,11 +13,15 @@ artifacts:
     name: info
     
 build_script: |
+  echo %PATH%
   call env vc
+  echo %PATH%
   call env python qt5 jom qwt
+  echo %PATH%
   where python
   where qmake
   where jom
+  where cl
   python -m pip install mugideploy
   git clone https://github.com/opencor/qwt.git
   cd qwt
